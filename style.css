@@ -186,7 +186,7 @@ body {
 
 .story-section {
     height: 80vh;
-    background: url('mo.jpg') center/cover fixed;
+    background: url('img/mo.jpg') center/cover fixed;
     display: flex;
     align-items: center;
     justify-content: center;
