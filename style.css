@@ -5,9 +5,10 @@
          url('fonts/Illusias-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
-/* 2. VARIÁVEIS */
+/* 2. VARIÁVEIS DE CORES E TRANSIÇÕES */
 :root {
     --bg-main: #F6F4EF;
     --gray-light: #D9D9D9;
@@ -19,7 +20,7 @@
     --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* 3. RESET */
+/* 3. RESET E TIPOGRAFIA GERAL */
 * {
     margin: 0; padding: 0; box-sizing: border-box;
 }
@@ -32,58 +33,57 @@ body {
     overflow-x: hidden;
 }
 
-/* 4. NAVBAR DINÂMICA */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+/* 4. NAVBAR (Sticky & Transparent Effect) */
 .navbar {
     position: fixed;
     top: 0; width: 100%; z-index: 1000;
     padding: 30px 0;
     background: transparent;
     transition: var(--transition);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .navbar.scrolled {
     background: var(--white-pure);
     padding: 15px 0;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
     border-bottom: 1px solid var(--gray-light);
 }
 
 .nav-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
+    display: flex; justify-content: center; align-items: center; gap: 60px;
 }
 
 .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 30px;
+    display: flex; list-style: none; gap: 30px;
 }
 
 .nav-links a {
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    color: var(--white-pure); /* Cor inicial */
+    text-decoration: none; text-transform: uppercase;
+    font-size: 0.75rem; letter-spacing: 2.5px;
+    color: var(--white-pure); /* Cor inicial sobre a foto */
     transition: var(--transition);
 }
 
 .monogram {
-    font-family: 'Illusias', serif;
-    font-size: 2.5rem;
-    color: var(--white-pure); /* Cor inicial */
-    transition: var(--transition);
+    font-family: 'Illusias', serif; font-size: 2.5rem;
+    color: var(--white-pure); /* Cor inicial sobre a foto */
+    padding: 0 20px; transition: var(--transition);
 }
 
-/* Cores quando rolar a página */
+/* Mudança de cores quando a barra fica branca */
 .navbar.scrolled .nav-links a { color: var(--text-dark); }
 .navbar.scrolled .monogram { color: var(--dusty-blue); }
-.navbar.scrolled .nav-links a:hover { color: var(--dusty-blue); }
+.navbar.scrolled .nav-links a:hover { color: var(--champagne); }
 
-/* 5. HERO */
+/* 5. HERO SECTION */
 .hero {
     height: 100vh;
     background: url('momo.jpeg') no-repeat center center/cover;
@@ -93,108 +93,118 @@ body {
 
 .hero-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.25);
 }
 
 .hero-content { position: relative; z-index: 2; }
 
 .hero h1 {
-    font-family: 'Illusias', serif;
-    font-size: 6rem;
-    margin-bottom: 10px;
+    font-family: 'Illusias', 'Playfair Display', serif;
+    font-size: 6.5rem; margin-bottom: 10px; font-weight: normal;
 }
 
 .hero-date {
-    font-family: 'Lora', serif;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    font-size: 1rem;
-    margin-bottom: 30px;
+    font-family: 'Lora', serif; font-size: 1.1rem;
+    letter-spacing: 5px; text-transform: uppercase; margin-bottom: 40px;
 }
 
-/* 6. COMPONENTES */
-.cursive-title {
-    font-family: 'Illusias', serif;
-    color: var(--dusty-blue);
-    font-size: 4.5rem;
-    margin-bottom: 20px;
-}
-
+/* BOTÕES */
 .btn-outline {
-    padding: 12px 40px;
-    border: 1px solid white;
-    color: white;
-    text-decoration: none;
-    transition: 0.4s;
+    padding: 14px 45px; border: 1px solid var(--white-pure);
+    color: var(--white-pure); text-decoration: none;
+    text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;
+    transition: var(--transition);
 }
 
 .btn-outline:hover {
-    background: var(--champagne);
-    border-color: var(--champagne);
-    color: var(--text-dark);
+    background: var(--champagne); border-color: var(--champagne); color: var(--text-dark);
 }
 
 .btn-solid {
-    display: inline-block;
-    padding: 15px 50px;
-    background: var(--champagne);
-    color: var(--text-dark);
-    text-decoration: none;
-    margin-top: 20px;
+    display: inline-block; padding: 16px 55px; background: var(--champagne);
+    color: var(--text-dark); text-decoration: none; text-transform: uppercase;
+    font-size: 0.85rem; letter-spacing: 2px; margin-top: 30px; transition: var(--transition);
 }
 
-/* 7. COUNTDOWN */
-#countdown {
-    display: flex; justify-content: center; gap: 30px; margin-top: 40px;
+.btn-solid:hover { transform: translateY(-2px); filter: brightness(0.95); }
+
+/* 6. ANNOUNCEMENT & COUNTDOWN */
+.announcement {
+    background-color: #FBF9F6; padding: 100px 0;
 }
 
-.time-block span {
-    font-family: 'Illusias', serif;
-    font-size: 3.5rem;
-    color: var(--dusty-blue);
+.cursive-title {
+    font-family: 'Illusias', serif; font-size: 4.5rem; color: var(--dusty-blue); margin-bottom: 20px; font-weight: normal;
 }
 
-.time-block small {
-    display: block; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem;
+.main-text {
+    font-family: 'Lora', serif; font-size: 1.2rem; max-width: 650px;
+    margin: 20px auto; color: var(--text-dark);
 }
 
-/* 8. STORY */
+.small-text { font-style: italic; color: var(--sage-green); margin-bottom: 20px; }
+
+.countdown-wrapper { margin-top: 80px; padding-top: 50px; border-top: 1px solid var(--gray-light); }
+
+.countdown-label {
+    text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem;
+    margin-bottom: 30px; color: var(--text-dark); font-weight: normal;
+}
+
+#countdown { display: flex; justify-content: center; gap: 40px; }
+
+.time-block { display: flex; flex-direction: column; min-width: 100px; }
+
+.time-block span { font-family: 'Illusias', serif; font-size: 4rem; color: var(--dusty-blue); line-height: 1; }
+
+.time-block small { text-transform: uppercase; letter-spacing: 2px; font-size: 0.65rem; color: var(--sage-green); margin-top: 10px; }
+
+/* 7. OUR STORY */
 .story-section {
-    height: 80vh;
-    background: url('mozaum.jpeg') center/cover fixed;
+    height: 90vh; background: url('mozaum.jpeg') center/cover fixed;
     display: flex; align-items: center; justify-content: center;
 }
 
 .story-card {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 60px;
-    max-width: 600px;
-    text-align: center;
-    backdrop-filter: blur(5px);
+    background: rgba(255, 255, 255, 0.92); padding: 80px 50px;
+    max-width: 650px; text-align: center; backdrop-filter: blur(8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-/* 9. DETAILS GRID */
+.ornament { color: var(--champagne); font-size: 1.5rem; }
+
+/* 8. DETAILS GRID */
+.details-section { background-color: var(--bg-main); }
+
 .details-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin-top: 60px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; margin-top: 80px;
 }
 
-.detail-item h3 {
-    font-family: 'Illusias', serif;
-    font-size: 2rem;
-    margin: 15px 0;
-    color: var(--dusty-blue);
-}
+.icon-decorative { font-size: 2.5rem; margin-bottom: 20px; display: block; }
+
+.detail-item h3 { font-family: 'Illusias', serif; color: var(--dusty-blue); font-size: 2rem; margin-bottom: 15px; font-weight: normal; }
+
+.detail-item p { font-size: 0.95rem; color: var(--text-dark); }
+
+/* 9. FOOTER */
+.footer { padding: 60px 0; text-align: center; border-top: 1px solid var(--gray-light); }
 
 /* 10. RESPONSIVIDADE */
 @media (max-width: 992px) {
-    .hero h1 { font-size: 4rem; }
     .nav-container { gap: 20px; }
+    .hero h1 { font-size: 4.5rem; }
 }
 
 @media (max-width: 768px) {
     .nav-links { display: none; }
-    .details-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 3.5rem; }
+    .cursive-title { font-size: 3.5rem; }
+    
+    .details-grid { grid-template-columns: 1fr; gap: 40px; }
+    
+    #countdown {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    
+    .story-card { margin: 20px; padding: 40px 20px; }
 }
