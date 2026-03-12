@@ -186,7 +186,7 @@ body {
 
 .story-section {
     height: 80vh;
-    background: url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&q=80&w=2000') center/cover fixed;
+    background: url('mo.jpg') center/cover fixed;
     display: flex;
     align-items: center;
     justify-content: center;
