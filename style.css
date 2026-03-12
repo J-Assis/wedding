@@ -208,3 +208,82 @@ body {
     
     .story-card { margin: 20px; padding: 40px 20px; }
 }
+.memories-section {
+  padding: 80px 20px;
+  background-color: #fdf6f0;
+}
+
+.memories-subtitle {
+  text-align: center;
+  color: #a07860;
+  font-style: italic;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+}
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 260px;
+  gap: 12px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.photo-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.photo-card.tall {
+  grid-row: span 2;
+}
+
+.photo-card.wide {
+  grid-column: span 2;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.photo-card:hover img {
+  transform: scale(1.06);
+}
+
+.photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(180, 120, 90, 0.35), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 16px;
+  font-size: 1.6rem;
+}
+
+.photo-card:hover .photo-overlay {
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .photo-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 180px;
+  }
+
+  .photo-card.tall {
+    grid-row: span 1;
+  }
+
+  .photo-card.wide {
+    grid-column: span 2;
+  }
+}
