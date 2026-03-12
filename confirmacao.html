@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Confirmação de Presença</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Lora&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.confirm-section{
+max-width:600px;
+margin:180px auto 120px;
+padding:60px;
+background:white;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+border-radius:6px;
+text-align:center;
+}
+
+.confirm-section h2{
+font-family:'Illusias',serif;
+font-size:3rem;
+color:var(--dusty-blue);
+margin-bottom:20px;
+}
+
+.confirm-section p{
+margin-bottom:25px;
+}
+
+.form-group{
+margin-bottom:20px;
+text-align:left;
+}
+
+.form-group label{
+display:block;
+margin-bottom:6px;
+font-size:0.85rem;
+letter-spacing:1px;
+}
+
+.form-group input,
+.form-group select{
+width:100%;
+padding:12px;
+border:1px solid var(--gray-light);
+font-family:'Libre Baskerville',serif;
+}
+
+.small-warning{
+font-size:0.8rem;
+color:var(--sage-green);
+margin-top:15px;
+font-style:italic;
+}
+
+button{
+margin-top:25px;
+padding:14px 40px;
+border:none;
+background:var(--champagne);
+cursor:pointer;
+text-transform:uppercase;
+letter-spacing:2px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<section class="confirm-section">
+
+<h2>Confirmação</h2>
+
+<p>Ficaremos muito felizes com sua presença.</p>
+
+<form id="rsvpForm">
+
+<div class="form-group">
+<label>Nome completo</label>
+<input type="text" name="nome" required>
+</div>
+
+<div class="form-group">
+<label>Telefone</label>
+<input type="tel" name="telefone" required>
+</div>
+
+<div class="form-group">
+<label>Você irá ao casamento?</label>
+<select name="presenca" required>
+<option value="">Selecione</option>
+<option>Sim, estarei presente</option>
+<option>Infelizmente não poderei ir</option>
+</select>
+</div>
+
+<button type="submit">Confirmar presença</button>
+
+<p class="small-warning">
+Para manter a organização do evento, pedimos gentilmente que apenas os convidados confirmem presença.
+</p>
+
+</form>
+
+<p id="msg"></p>
+
+</section>
+
+<script>
+
+document.getElementById("rsvpForm").addEventListener("submit", function(e){
+
+e.preventDefault()
+
+let data = new FormData(this)
+
+fetch("COLE_AQUI_URL_SCRIPT",{
+method:"POST",
+body:data
+})
+.then(res=>res.text())
+.then(res=>{
+document.getElementById("msg").innerText="Presença confirmada! Obrigado."
+document.getElementById("rsvpForm").reset()
+})
+
+})
+
+</script>
+
+</body>
+</html>
