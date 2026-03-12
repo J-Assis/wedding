@@ -1,23 +1,26 @@
-// Inicializar AOS
+// Inicializar AOS (Animações de rolagem)
 AOS.init({
     duration: 1000,
-    once: true
+    once: true // A animação ocorre apenas uma vez
 });
 
-// EFEITO DE SCROLL NA NAVBAR
+// --- EFEITO NAVBAR TRANSPARENTE/SÓLIDA ---
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 100) {
+    
+    // Adiciona a classe 'scrolled' quando rolar mais de 80px
+    if (window.scrollY > 80) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
     }
 });
 
-// COUNTDOWN
+// --- CONFIGURAÇÃO DO COUNTDOWN ---
+// Define a data do casamento
 const weddingDate = new Date("Oct 7, 2026 16:30:00").getTime();
 
-setInterval(function() {
+const countdown = setInterval(function() {
     const now = new Date().getTime();
     const distance = weddingDate - now;
 
@@ -26,6 +29,7 @@ setInterval(function() {
     const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const s = Math.floor((distance % (1000 * 60)) / 1000);
 
+    // Atualiza o HTML apenas se os elementos existirem na tela
     const daysEl = document.getElementById("days");
     if (daysEl) {
         daysEl.innerHTML = d;
@@ -33,15 +37,25 @@ setInterval(function() {
         document.getElementById("minutes").innerHTML = m;
         document.getElementById("seconds").innerHTML = s;
     }
+
+    // Quando a data chegar
+    if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").innerHTML = "É HOJE! ✨";
+    }
 }, 1000);
 
-// SMOOTH SCROLL
+// --- SMOOTH SCROLL (Rolagem suave ao clicar nos links) ---
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
         }
     });
 });
