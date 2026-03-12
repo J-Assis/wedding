@@ -1,147 +1,155 @@
-/* PALETA DE CORES E VARIÁVEIS */
+/* ESTILO: WEDDING EDITORIAL - JULYA & EMANUEL
+   PALETA: Champagne, Dusty Blue, Sage Green, Beige
+*/
 
-@font-face{
-font-family:'Illusias';
-src:url('fonts/illusias.otf') format('opentype');
-font-weight:normal;
-font-style:normal;
+/* 1. IMPORTAÇÃO DE FONTES */
+@font-face {
+    font-family: 'Illusias';
+    src: url('fonts/Illusias-Regular.woff2') format('woff2'),
+         url('fonts/Illusias-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
+/* Fontes de suporte via Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;1,400&display=swap');
+
+/* 2. VARIÁVEIS DE DESIGN */
 :root {
     --bg-main: #F6F4EF;
     --gray-light: #D9D9D9;
-    --champagne: hwb(41 66% 0%);
+    --champagne: #E8D3A4;
     --dusty-blue: #7E96B6;
-    --sage-green: #87c66c;
-    --text-dark: #4a4a4a;
+    --sage-green: #9DA784;
+    --text-dark: #4A4A4A;
+    --white-pure: #FFFFFF;
     --white-trans: rgba(255, 255, 255, 0.85);
+    --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+/* 3. RESET E GERAL */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Lora', serif;
+    font-family: 'Libre Baskerville', serif;
     background-color: var(--bg-main);
     color: var(--text-dark);
-    line-height: 1.6;
-    overflow-x: hidden;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* TÍTULOS CURSIVOS */
-.cursive {
-    font-family: 'Illusias';
-src: url('fonts/illusias.otf') format('truetype');
-    color: var(--dusty-blue);
-    font-size: 3.5rem;
-}
-
-/* CONTAINER CENTRAL */
 .container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 80px 20px;
+    padding: 100px 20px;
     text-align: center;
 }
 
-/* NAVBAR */
+h1, h2, h3, .cursive {
+    font-family: 'Illusias', 'Playfair Display', serif;
+    font-weight: normal;
+}
+
+/* 4. NAVBAR (Design Centralizado) */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    background: white;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--gray-light);
+    background: var(--white-pure);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding: 15px 0;
 }
 
 .nav-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 60px;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 30px;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--text-dark);
     text-transform: uppercase;
-    font-family: 'Playfair Display', serif;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    transition: 0.3s;
+    font-size: 0.75rem;
+    letter-spacing: 2.5px;
+    transition: var(--transition);
 }
 
 .nav-links a:hover {
     color: var(--dusty-blue);
 }
 
-/* MONOGRAMA CENTRAL */
 .monogram {
-    font-family: 'Illusias';
-src: url('fonts/illusias.otf') format('truetype');
-    font-size: 2.2rem;
+    font-family: 'Illusias', serif;
+    font-size: 2.4rem;
     color: var(--dusty-blue);
+    padding: 0 20px;
 }
 
-/* HERO SECTION */
+/* 5. HERO SECTION */
 .hero {
     height: 100vh;
-    background: url('momo.jpeg') no-repeat center center/cover;
+    background: url('https://images.unsplash.com/photo-1546193430-c2d20e1cb9a5?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    text-align: center;
-    color: white;
+    color: var(--white-pure);
 }
 
 .hero-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.2);
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.15); /* Overlay leve para estética editorial */
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
+    text-align: center;
 }
 
 .hero h1 {
-  font-family:'Illusias';
-    font-size: 1.2rem;
-    letter-spacing: 4px;
-    margin-bottom: 30px;
+    font-size: 6.5rem;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
 }
 
 .hero-date {
-    font-family: 'Illusias', cursive;
-    font-size: 1.2rem;
-    letter-spacing: 4px;
-    margin-bottom: 30px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 40px;
+    font-family: 'Lora', serif;
 }
 
-/* BOTÕES */
-
+/* 6. BOTÕES */
 .btn-outline {
-    padding: 12px 40px;
-    border: 1px solid white;
-    color: white;
+    padding: 14px 45px;
+    border: 1px solid var(--white-pure);
+    color: var(--white-pure);
     text-decoration: none;
-    font-family: 'Playfair Display', serif;
-    transition: 0.4s;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    transition: var(--transition);
 }
 
 .btn-outline:hover {
@@ -152,52 +160,87 @@ src: url('fonts/illusias.otf') format('truetype');
 
 .btn-solid {
     display: inline-block;
-    padding: 15px 50px;
+    padding: 16px 55px;
     background: var(--champagne);
     color: var(--text-dark);
     text-decoration: none;
-    font-family: 'Playfair Display', serif;
-    margin-top: 20px;
-    transition: 0.3s;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-top: 30px;
+    transition: var(--transition);
 }
 
 .btn-solid:hover {
-    filter: brightness(0.9);
+    filter: brightness(0.95);
+    transform: translateY(-2px);
 }
 
-/* COUNTDOWN */
+/* 7. SEÇÃO ANÚNCIO & COUNTDOWN */
+.announcement {
+    background-color: #FBF9F6;
+}
+
+.cursive-title {
+    font-size: 4.5rem;
+    color: var(--dusty-blue);
+    margin-bottom: 20px;
+}
+
+.main-text {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto 20px;
+    color: var(--text-dark);
+}
+
+.small-text {
+    font-style: italic;
+    color: var(--sage-green);
+    font-family: 'Lora', serif;
+}
 
 .countdown-wrapper {
-    margin-top: 60px;
+    margin-top: 80px;
+    border-top: 1px solid var(--gray-light);
+    padding-top: 50px;
 }
 
 .countdown-title {
-    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
 }
 
 #countdown {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    margin-top: 20px;
+    gap: 40px;
 }
 
 .time-block {
     display: flex;
     flex-direction: column;
+    min-width: 100px;
 }
 
 .time-block span {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
+    font-size: 3.5rem;
     color: var(--dusty-blue);
+    font-family: 'Illusias', serif;
 }
 
-/* STORY SECTION */
+.time-block small {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.7rem;
+    color: var(--sage-green);
+}
 
+/* 8. OUR STORY (Parallax Card) */
 .story-section {
-    height: 80vh;
-    background: url('mozaum.jpeg') center/cover fixed;
+    height: 90vh;
+    background: url('https://images.unsplash.com/photo-1510076857177-7470076d4098?auto=format&fit=crop&q=80&w=2000') center/cover fixed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -205,60 +248,86 @@ src: url('fonts/illusias.otf') format('truetype');
 
 .story-card {
     background: var(--white-trans);
-    padding: 60px;
-    max-width: 600px;
+    padding: 80px 60px;
+    max-width: 650px;
     text-align: center;
-    border-radius: 2px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.story-card p {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    line-height: 2;
 }
 
 .icon-heart {
-    color: var(--sage-green);
-    font-size: 1.5rem;
+    color: var(--champagne);
+    font-size: 1.2rem;
+    margin: 20px 0;
     display: block;
-    margin: 10px 0;
 }
 
-/* DETAILS */
+/* 9. DETAILS (Grid) */
+.details-section {
+    background-color: var(--bg-main);
+}
 
 .details-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin-top: 50px;
+    gap: 60px;
+    margin-top: 70px;
+}
+
+.detail-item {
+    padding: 20px;
+}
+
+.detail-item .icon-svg {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 20px;
+    fill: var(--sage-green);
 }
 
 .detail-item h3 {
-    margin: 15px 0;
+    font-size: 1.8rem;
     color: var(--dusty-blue);
-    font-family: 'Playfair Display', serif;
+    margin-bottom: 15px;
 }
 
-.detail-item .icon {
-    font-size: 2rem;
+.detail-item p {
+    font-size: 0.95rem;
+    color: var(--text-dark);
 }
 
-/* RESPONSIVO */
+/* 10. RESPONSIVIDADE (Mobile) */
+@media (max-width: 992px) {
+    .nav-container { gap: 20px; }
+    .hero h1 { font-size: 4.5rem; }
+}
 
 @media (max-width: 768px) {
-
-    .nav-links {
-        display: none;
-    }
-
-    .hero h1 {
-        font-size: 3.5rem;
-    }
-
+    .nav-links { display: none; } /* Sugestão: implementar menu hamburguer em JS */
+    .navbar { padding: 10px 0; }
+    
+    .hero h1 { font-size: 3.2rem; }
+    .cursive-title { font-size: 3rem; }
+    
     .details-grid {
         grid-template-columns: 1fr;
+        gap: 40px;
     }
-
+    
     #countdown {
-        gap: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
     }
-
-    .time-block span {
-        font-size: 2rem;
+    
+    .story-card {
+        margin: 20px;
+        padding: 40px 20px;
     }
-
 }
