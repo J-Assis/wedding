@@ -1,0 +1,253 @@
+/* PALETA DE CORES E VARIÁVEIS */
+:root {
+    --bg-main: #F6F4EF;
+    --gray-light: #D9D9D9;
+    --champagne: hwb(41 66% 0%);
+    --dusty-blue: #7E96B6;
+    --sage-green: #87c66c;
+    --text-dark: #4a4a4a;
+    --white-trans: rgba(255, 255, 255, 0.85);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lora', serif;
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* TÍTULOS CURSIVOS */
+.cursive {
+    font-family: 'Alex Brush', cursive;
+    color: var(--dusty-blue);
+    font-size: 3.5rem;
+}
+
+/* CONTAINER CENTRAL */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: white;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--gray-light);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    text-transform: uppercase;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--dusty-blue);
+}
+
+/* MONOGRAMA CENTRAL */
+.monogram {
+    font-family: 'Alex Brush', cursive;
+    font-size: 2.2rem;
+    color: var(--dusty-blue);
+}
+
+/* HERO SECTION */
+.hero {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.2);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-family: 'Alex Brush', cursive;
+    font-size: 6rem;
+    margin-bottom: 15px;
+}
+
+.hero-date {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+}
+
+/* BOTÕES */
+
+.btn-outline {
+    padding: 12px 40px;
+    border: 1px solid white;
+    color: white;
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    transition: 0.4s;
+}
+
+.btn-outline:hover {
+    background: var(--champagne);
+    border-color: var(--champagne);
+    color: var(--text-dark);
+}
+
+.btn-solid {
+    display: inline-block;
+    padding: 15px 50px;
+    background: var(--champagne);
+    color: var(--text-dark);
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.btn-solid:hover {
+    filter: brightness(0.9);
+}
+
+/* COUNTDOWN */
+
+.countdown-wrapper {
+    margin-top: 60px;
+}
+
+.countdown-title {
+    font-family: 'Playfair Display', serif;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.time-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.time-block span {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--dusty-blue);
+}
+
+/* STORY SECTION */
+
+.story-section {
+    height: 80vh;
+    background: url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&q=80&w=2000') center/cover fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.story-card {
+    background: var(--white-trans);
+    padding: 60px;
+    max-width: 600px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.icon-heart {
+    color: var(--sage-green);
+    font-size: 1.5rem;
+    display: block;
+    margin: 10px 0;
+}
+
+/* DETAILS */
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.detail-item h3 {
+    margin: 15px 0;
+    color: var(--dusty-blue);
+    font-family: 'Playfair Display', serif;
+}
+
+.detail-item .icon {
+    font-size: 2rem;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 768px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #countdown {
+        gap: 10px;
+    }
+
+    .time-block span {
+        font-size: 2rem;
+    }
+
+}
