@@ -86,7 +86,7 @@ body {
 /* HERO SECTION */
 .hero {
     height: 100vh;
-    background: url('mo-zaum.jpg') no-repeat center center/cover;
+    background: url('momo.jpeg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -186,7 +186,7 @@ body {
 
 .story-section {
     height: 80vh;
-    background: url('mo-zaum.jpg') center/cover fixed;
+    background: url('mozaum.jpeg') center/cover fixed;
     display: flex;
     align-items: center;
     justify-content: center;
