@@ -96,7 +96,7 @@ src: url('fonts/illusias.otf') format('truetype');
 /* HERO SECTION */
 .hero {
     height: 100vh;
-    background: url('mo.jpeg') no-repeat center center/cover;
+    background: url('momo.jpeg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
