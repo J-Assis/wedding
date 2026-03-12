@@ -106,7 +106,7 @@ h1, h2, h3, .cursive {
 /* 5. HERO SECTION */
 .hero {
     height: 100vh;
-    background: url('https://images.unsplash.com/photo-1546193430-c2d20e1cb9a5?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
+    background: url('momo.jpeg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -240,7 +240,7 @@ h1, h2, h3, .cursive {
 /* 8. OUR STORY (Parallax Card) */
 .story-section {
     height: 90vh;
-    background: url('https://images.unsplash.com/photo-1510076857177-7470076d4098?auto=format&fit=crop&q=80&w=2000') center/cover fixed;
+    background: url('mozaum.jpeg') center/cover fixed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -305,7 +305,7 @@ h1, h2, h3, .cursive {
 /* 10. RESPONSIVIDADE (Mobile) */
 @media (max-width: 992px) {
     .nav-container { gap: 20px; }
-    .hero h1 { font-size: 4.5rem; }
+    .hero h1 { font-size: 3rem; }
 }
 
 @media (max-width: 768px) {
