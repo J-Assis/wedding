@@ -95,8 +95,8 @@ letter-spacing:2px;
 <label>Você irá ao casamento?</label>
 <select name="presenca" required>
 <option value="">Selecione</option>
-<option>Sim, estarei presente</option>
-<option>Infelizmente não poderei ir</option>
+<option value="Sim">Sim, estarei presente</option>
+<option value="Nao">Infelizmente não poderei ir</option>
 </select>
 </div>
 
@@ -120,8 +120,7 @@ e.preventDefault()
 
 let data = new FormData(this)
 
-fetch("https://script.google.com/macros/s/AKfycbwnrkmhSbC6L0_fbejTe36P__vdBtid70g2Pl4imfOVsWm5OkM2ViJutYaXjpB6HPvTnw/exec",{
-method:"POST",
+fetch("https://script.google.com/macros/s/AKfycbxj44NVqnPhbB9T1qJwh2QyZ7UUNWqXI3AGu6FwpJUJVhtnRbhI2Uppc_iAgCf2Xlbsgw/exec:"POST",
 body:data
 })
 .then(res=>res.text())
