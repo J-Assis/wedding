@@ -113,6 +113,7 @@ Para manter a organização do evento, pedimos gentilmente que apenas os convida
 </section>
 
 <script>
+
 document.getElementById("rsvpForm").addEventListener("submit", function(e){
 
   e.preventDefault()
@@ -125,15 +126,22 @@ document.getElementById("rsvpForm").addEventListener("submit", function(e){
   })
   .then(res=>res.text())
   .then(res=>{
-    document.getElementById("msg").innerText="."
+
+    document.getElementById("msg").innerText="Presença confirmada! Redirecionando..."
+
     document.getElementById("rsvpForm").reset()
-    <link href="index.html">
+
+    setTimeout(function(){
+      window.location.href="index.html"
+    },1500)
+
   })
   .catch(()=>{
     document.getElementById("msg").innerText="Erro ao enviar. Tente novamente."
   })
 
 })
+
 </script>
 
 </body>
