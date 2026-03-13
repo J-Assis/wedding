@@ -113,24 +113,26 @@ Para manter a organização do evento, pedimos gentilmente que apenas os convida
 </section>
 
 <script>
-
 document.getElementById("rsvpForm").addEventListener("submit", function(e){
 
-e.preventDefault()
+  e.preventDefault()
 
-let data = new FormData(this)
+  let data = new FormData(this)
 
-fetch("https://script.google.com/macros/s/AKfycbxj44NVqnPhbB9T1qJwh2QyZ7UUNWqXI3AGu6FwpJUJVhtnRbhI2Uppc_iAgCf2Xlbsgw/exec:"POST",
-body:data
+  fetch("https://script.google.com/macros/s/AKfycbxj44NVqnPhbB9T1qJwh2QyZ7UUNWqXI3AGu6FwpJUJVhtnRbhI2Uppc_iAgCf2Xlbsgw/exec",{
+    method:"POST",
+    body:data
+  })
+  .then(res=>res.text())
+  .then(res=>{
+    document.getElementById("msg").innerText="Presença confirmada! Obrigado."
+    document.getElementById("rsvpForm").reset()
+  })
+  .catch(()=>{
+    document.getElementById("msg").innerText="Erro ao enviar. Tente novamente."
+  })
+
 })
-.then(res=>res.text())
-.then(res=>{
-document.getElementById("msg").innerText="Presença confirmada! Obrigado."
-document.getElementById("rsvpForm").reset()
-})
-
-})
-
 </script>
 
 </body>
