@@ -290,39 +290,54 @@ body {
   }
 }
 
+/* ============================= */
+/* 12. PRESENTES */
+/* ============================= */
 
-/* PRESENTES */
+.gifts-section{
+background: var(--bg-main);
+padding: 120px 0;
+}
+
+/* GRID */
 
 .gifts-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
 gap:35px;
 margin-top:70px;
+max-width:900px;
+margin-left:auto;
+margin-right:auto;
 }
 
-/* CARD */
+/* CARD DO PRESENTE */
 
 .gift-card{
 background:var(--white-pure);
-padding:30px 25px;
-border-radius:20px;
+padding:28px 24px;
+border-radius:22px;
 border:1px solid rgba(0,0,0,0.05);
-transition:var(--transition);
 box-shadow:0 6px 20px rgba(0,0,0,0.04);
+transition:var(--transition);
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
 }
 
 .gift-card:hover{
 transform:translateY(-6px);
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
+box-shadow:0 12px 30px rgba(0,0,0,0.08);
 }
 
-/* TITULO */
+/* TÍTULO */
 
 .gift-card h3{
 font-family:'Illusias', serif;
 color:var(--dusty-blue);
 font-size:1.8rem;
-margin-bottom:12px;
+margin-bottom:10px;
 font-weight:normal;
 }
 
@@ -334,13 +349,20 @@ height:130px;
 object-fit:cover;
 border-radius:14px;
 margin-bottom:15px;
+transition:transform 0.5s ease;
+}
+
+.gift-card:hover .gift-image{
+transform:scale(1.05);
 }
 
 /* TEXTO */
 
 .gift-card p{
 font-size:0.9rem;
+color:var(--text-dark);
 margin-bottom:15px;
+max-width:220px;
 }
 
 /* VALOR */
@@ -351,15 +373,20 @@ font-size:1.1rem;
 color:var(--sage-green);
 margin-bottom:18px;
 letter-spacing:1px;
+font-weight:bold;
 }
 
 /* BOTÃO */
 
-.gift-card button{
+.gift-card .btn-solid{
 width:100%;
+padding:12px 0;
+font-size:0.75rem;
 }
 
+/* ============================= */
 /* MODAL PIX */
+/* ============================= */
 
 .pix-modal{
 position:fixed;
@@ -369,36 +396,95 @@ display:none;
 align-items:center;
 justify-content:center;
 z-index:2000;
+padding:20px;
 }
+
+/* CAIXA DO MODAL */
 
 .pix-content{
 background:var(--white-pure);
-padding:60px 40px;
-max-width:400px;
+padding:55px 40px;
+max-width:380px;
+width:100%;
 text-align:center;
+border-radius:20px;
 position:relative;
+box-shadow:0 20px 50px rgba(0,0,0,0.15);
 }
+
+/* TITULO MODAL */
 
 .pix-content h3{
 font-family:'Illusias', serif;
 color:var(--dusty-blue);
 font-size:2.2rem;
 margin-bottom:10px;
+font-weight:normal;
 }
+
+/* TEXTO VALOR */
+
+#pixValue{
+font-size:0.95rem;
+color:var(--sage-green);
+margin-bottom:20px;
+}
+
+/* QR CODE */
 
 .pix-qrcode{
 width:200px;
-margin:20px 0;
+margin:20px auto;
+display:block;
 }
 
+/* CHAVE PIX */
+
 .pix-key{
-font-size:0.9rem;
+font-size:0.85rem;
+margin-top:10px;
+color:var(--text-dark);
 }
+
+/* BOTÃO FECHAR */
 
 .close-modal{
 position:absolute;
-top:10px;
-right:15px;
+top:12px;
+right:18px;
 font-size:26px;
 cursor:pointer;
+color:var(--text-dark);
+transition:var(--transition);
+}
+
+.close-modal:hover{
+color:var(--dusty-blue);
+}
+
+/* RESPONSIVO */
+
+@media (max-width:768px){
+
+.gifts-grid{
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+
+.gift-image{
+height:110px;
+}
+
+.pix-content{
+padding:40px 25px;
+}
+
+}
+
+@media (max-width:480px){
+
+.gifts-grid{
+grid-template-columns:1fr;
+}
+
 }
