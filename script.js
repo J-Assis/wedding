@@ -41,7 +41,8 @@ const countdown = setInterval(function() {
     // Quando a data chegar
     if (distance < 0) {
         clearInterval(countdown);
-        document.getElementById("countdown").innerHTML = "É HOJE! ✨";
+        const countdownEl = document.getElementById("countdown");
+        if (countdownEl) countdownEl.innerHTML = "É HOJE! ✨";
     }
 }, 1000);
 
@@ -65,26 +66,84 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // SISTEMA DE PRESENTES PIX
 // ----------------------------
 
-function abrirPix(nome, valor){
-
-    const nomePresente = document.getElementById("pixGiftName");
-    const valorPresente = document.getElementById("pixValue");
+/**
+ * Abre o modal de Pix com os dados do presente selecionado
+ * @param {string} nome - Nome do presente
+ * @param {string} valor - Valor formatado
+ * @param {string} chave - A chave Pix para cópia
+ */
+function abrirPix(nome, valor, chave) {
     const modal = document.getElementById("pixModal");
+    const nomePresente = document.getElementById("modalGiftName");
+    const valorPresente = document.getElementById("pixValue");
+    const inputPix = document.getElementById("pixKeyInput");
+    const btnCopiar = document.getElementById("btn-copiar-pix");
 
-    if(nomePresente && valorPresente && modal){
-
+    if (modal && nomePresente && valorPresente && inputPix) {
+        // Preenche as informações
         nomePresente.innerText = nome;
         valorPresente.innerText = "Valor sugerido: R$ " + valor;
+        inputPix.value = chave;
 
-        modal.style.display = "flex";
+        // Reseta o estado do botão de copiar
+        if (btnCopiar) {
+            btnCopiar.innerText = "Copiar Chave Pix";
+            btnCopiar.style.backgroundColor = ""; // Volta para a cor do CSS
+        }
+
+        // Adiciona a classe que dispara a animação CSS (display: flex + fade/slide)
+        modal.classList.add("ativo");
     }
 }
 
-function fecharPix(){
-
+/**
+ * Fecha o modal de Pix removendo a classe ativa
+ */
+function fecharPix() {
     const modal = document.getElementById("pixModal");
-
-    if(modal){
-        modal.style.display = "none";
+    if (modal) {
+        modal.classList.remove("ativo");
     }
 }
+
+// Event Listeners Adicionais para o Modal
+document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("pixModal");
+    const btnFechar = document.querySelector(".close-modal");
+    const btnCopiar = document.getElementById("btn-copiar-pix");
+    const inputPix = document.getElementById("pixKeyInput");
+
+    // Fecha ao clicar no 'X'
+    if (btnFechar) {
+        btnFechar.onclick = fecharPix;
+    }
+
+    // Fecha ao clicar fora da caixa branca (no fundo escuro)
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            fecharPix();
+        }
+    };
+
+    // Lógica do botão Copiar
+    if (btnCopiar && inputPix) {
+        btnCopiar.onclick = function() {
+            inputPix.select();
+            inputPix.setSelectionRange(0, 99999); // Suporte para mobile
+            
+            navigator.clipboard.writeText(inputPix.value).then(() => {
+                // Feedback visual de sucesso
+                btnCopiar.innerText = "Copiado! ✔";
+                btnCopiar.style.backgroundColor = "#8ca67a"; // Tom verde suave
+                
+                // Opcional: Voltar ao texto normal após 3 segundos
+                setTimeout(() => {
+                    btnCopiar.innerText = "Copiar Chave Pix";
+                    btnCopiar.style.backgroundColor = "";
+                }, 3000);
+            }).catch(err => {
+                console.error("Erro ao copiar: ", err);
+            });
+        };
+    }
+});
