@@ -291,226 +291,185 @@ body {
 }
 
 /* ============================= */
-/* 12. PRESENTES */
+/* 12. PRESENTES & MODAL */
 /* ============================= */
+
+:root {
+  --bg-main: #faf8f5;
+  --white-pure: #ffffff;
+  --dusty-blue: #8fa3ad; /* Ajuste conforme sua paleta */
+  --sage-green: #a3b18a;
+  --text-dark: #5a4b41;
+  --accent-soft: #e8dfd8;
+  --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
 
 .gifts-section {
   background: var(--bg-main);
-  padding: 120px 20px; /* Adicionado padding lateral para telas menores */
+  padding: 120px 20px;
 }
 
-/* GRID */
 .gifts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 35px;
-  margin-top: 70px;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-/* CARTÃO DO PRESENTE */
+/* CARD DO PRESENTE */
 .gift-card {
   background: var(--white-pure);
-  padding: 28px 24px;
-  border-radius: 22px;
-  border: 1px solid rgba(0, 0, 0, 0.03); /* Borda mais sutil */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.03); /* Sombra inicial mais suave */
-  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
-              box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  padding: 30px 25px;
+  border-radius: 24px;
+  border: 1px solid rgba(0,0,0,0.02);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  transition: var(--transition);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  overflow: hidden; /* Evita que a imagem vaze nas bordas arredondadas */
+  overflow: hidden;
 }
 
 .gift-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); /* Sombra mais difusa e elegante no hover */
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.07);
 }
 
-/* TÍTULO */
-.gift-card h3 {
-  font-family: 'Illusias', serif;
-  color: var(--dusty-blue);
-  font-size: 1.8rem;
-  margin-bottom: 8px;
-  font-weight: normal;
-}
-
-/* FOTO DO PRESENTE */
 .gift-image {
   width: 100%;
-  height: 140px; /* Levemente maior para mais destaque */
+  height: 150px;
   object-fit: cover;
-  border-radius: 14px;
-  margin-bottom: 18px;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Transição amanteigada */
-  will-change: transform; /* Otimização para navegadores */
+  border-radius: 16px;
+  margin-bottom: 20px;
+  transition: transform 0.6s ease;
 }
 
 .gift-card:hover .gift-image {
-  transform: scale(1.06); /* Zoom mais suave */
+  transform: scale(1.05);
 }
 
-/* TEXTO */
+.gift-card h3 {
+  font-family: 'Illusias', serif; /* Certifique-se que a fonte está carregada */
+  color: var(--dusty-blue);
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
 .gift-card p {
   font-size: 0.9rem;
   color: var(--text-dark);
+  line-height: 1.5;
   margin-bottom: 15px;
-  max-width: 220px;
-  line-height: 1.5; /* Melhor legibilidade */
 }
 
-/* VALOR */
 .gift-price {
-  display: block;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: var(--sage-green);
-  margin-bottom: 22px;
-  letter-spacing: 1px;
-  font-weight: 600; /* Levemente menos pesado que 'bold' puro, mais elegante */
+  font-weight: 600;
+  margin-bottom: 25px;
 }
 
-/* BOTÃO DENTRO DO CARD */
-.gift-card .btn-solid {
+/* BOTÕES ARREDONDADOS E SUAVES */
+.btn-solid {
   width: 100%;
-  padding: 14px 0;
+  padding: 15px 30px;
+  background-color: var(--accent-soft);
+  color: var(--text-dark);
+  border-radius: 50px; /* Estilo Pílula */
+  border: none;
   font-size: 0.8rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  border-radius: 30px; /* Deixa o botão mais arredondado e amigável */
-  transition: all 0.3s ease;
   cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(232, 223, 216, 0.4);
 }
 
-/* ============================= */
-/* MODAL PIX - ANIMAÇÕES E ESTILO */
-/* ============================= */
-
-/* Animação de entrada do fundo escuro */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.btn-solid:hover {
+  background-color: #dcd0c5;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(220, 208, 197, 0.6);
 }
 
-/* Animação de entrada da caixinha do modal */
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
+/* MODAL PIX */
 .pix-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55); /* Fundo sutilmente mais escuro para destacar o modal */
-  backdrop-filter: blur(4px); /* Efeito de desfoque no fundo (elegante!) */
-  display: none; /* Mantido para controle via JS */
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(6px);
+  display: none; /* Controlado pelo JS */
   align-items: center;
   justify-content: center;
-  z-index: 2000;
+  z-index: 9999;
   padding: 20px;
 }
 
-/* Classe que o JS vai adicionar para mostrar o modal com animação */
 .pix-modal.ativo {
   display: flex;
-  animation: fadeIn 0.4s ease forwards;
+  animation: fadeIn 0.4s ease;
 }
 
-/* CAIXA DO MODAL */
 .pix-content {
   background: var(--white-pure);
-  padding: 55px 40px 45px;
+  padding: 50px 40px;
   max-width: 400px;
   width: 100%;
-  text-align: center;
-  border-radius: 24px;
+  border-radius: 28px;
   position: relative;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
-  opacity: 0; /* Começa invisível para a animação */
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+  animation: slideUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.pix-modal.ativo .pix-content {
-  animation: slideUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-  animation-delay: 0.1s; /* Pequeno atraso para o fundo aparecer primeiro */
-}
-
-/* TITULO MODAL */
-.pix-content h3 {
-  font-family: 'Illusias', serif;
-  color: var(--dusty-blue);
-  font-size: 2.2rem;
-  margin-bottom: 8px;
-  font-weight: normal;
-}
-
-/* TEXTO VALOR */
-#pixValue {
-  font-size: 1.05rem;
-  color: var(--sage-green);
-  margin-bottom: 25px;
-  font-weight: 600;
-}
-
-/* QR CODE */
-.pix-qrcode {
-  width: 180px;
-  margin: 0 auto 20px;
-  display: block;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Destaca levemente o QR Code */
-}
-
-/* CHAVE PIX */
-.pix-key {
-  font-size: 0.9rem;
-  margin-top: 15px;
-  color: var(--text-dark);
-  background: rgba(0,0,0,0.03);
-  padding: 12px;
-  border-radius: 8px;
-  word-break: break-all; /* Garante que chaves longas não quebrem o layout */
-}
-
-/* BOTÃO FECHAR */
 .close-modal {
   position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 28px;
+  top: 20px;
+  right: 25px;
+  font-size: 24px;
   cursor: pointer;
-  color: #aaa; /* Cor neutra inicial */
-  transition: color 0.3s ease, transform 0.3s ease;
-  line-height: 1;
+  color: #ccc;
+  transition: 0.3s;
 }
 
-.close-modal:hover {
-  color: var(--dusty-blue);
-  transform: rotate(90deg); /* Pequeno charme ao passar o mouse */
+.close-modal:hover { color: var(--text-dark); transform: rotate(90deg); }
+
+.pix-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  margin: 15px 0;
+  text-align: center;
+  background: #f9f9f9;
+  color: #666;
+  font-family: monospace;
 }
+
+#btn-copiar-pix {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--sage-green);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#btn-copiar-pix:hover { opacity: 0.9; }
+
+/* ANIMAÇÕES */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
 /* RESPONSIVO */
 @media (max-width: 768px) {
-  .gifts-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  
-  .gift-image {
-    height: 120px;
-  }
-  
-  .pix-content {
-    padding: 45px 25px 35px;
-  }
+  .gifts-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
 }
-
 @media (max-width: 480px) {
-  .gifts-grid {
-    grid-template-columns: 1fr;
-    max-width: 320px; /* Controla a largura no celular para não ficar esticado demais */
-  }
+  .gifts-grid { grid-template-columns: 1fr; }
 }
