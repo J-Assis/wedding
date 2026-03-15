@@ -137,65 +137,49 @@ Era terça de lua cheia, das vezes em que vivemos momentos que vamos relembrar a
 </section>
 
 
-<section class="presentes-section">
+<section class="gifts-section">
+  <div class="container">
 
-<h2>Presentes</h2>
+    <h2 class="cursive-title">Presentes</h2>
 
-<p class="texto-presentes">
-Sua presença já é o nosso maior presente.  
-Mas se desejar nos presentear, escolha uma das opções abaixo.
-</p>
+    <p class="main-text">
+      Sua presença é o nosso maior presente.
+      Mas se desejar nos abençoar de outra forma,
+      escolha uma das opções abaixo.
+    </p>
 
-<div class="presentes-container">
+    <div class="gifts-grid">
 
-<div class="presente" onclick="mostrarPix('Café da manhã especial',30)">
-☕ Café da manhã especial<br>
-R$30
-</div>
+      <div class="gift-card">
+        <h3>Café da manhã</h3>
+        <p>Um café especial para começar nossa vida juntos.</p>
+        <span class="gift-price">R$ 30</span>
+        <button class="btn-solid" onclick="abrirPix('Café da manhã',30)">Presentear</button>
+      </div>
 
-<div class="presente" onclick="mostrarPix('Jantar romântico',80)">
-🍽️ Jantar romântico<br>
-R$80
-</div>
+      <div class="gift-card">
+        <h3>Jantar romântico</h3>
+        <p>Uma noite especial celebrando nossa união.</p>
+        <span class="gift-price">R$ 80</span>
+        <button class="btn-solid" onclick="abrirPix('Jantar romântico',80)">Presentear</button>
+      </div>
 
-<div class="presente" onclick="mostrarPix('Passeio na lua de mel',120)">
-🌅 Passeio na lua de mel<br>
-R$120
-</div>
+      <div class="gift-card">
+        <h3>Passeio na lua de mel</h3>
+        <p>Uma experiência inesquecível em nossa viagem.</p>
+        <span class="gift-price">R$ 120</span>
+        <button class="btn-solid" onclick="abrirPix('Passeio na lua de mel',120)">Presentear</button>
+      </div>
 
-<div class="presente" onclick="mostrarPix('Ajuda com viagem',150)">
-✈️ Ajuda com a viagem<br>
-R$150
-</div>
+      <div class="gift-card">
+        <h3>Nosso novo lar</h3>
+        <p>Uma contribuição para construirmos nosso lar.</p>
+        <span class="gift-price">R$ 200</span>
+        <button class="btn-solid" onclick="abrirPix('Nosso novo lar',200)">Presentear</button>
+      </div>
 
-<div class="presente" onclick="mostrarPix('Nosso novo lar',200)">
-🏡 Nosso novo lar<br>
-R$200
-</div>
-
-<div class="presente" onclick="mostrarPix('Presente especial',300)">
-🎁 Presente especial<br>
-R$300
-</div>
-
-</div>
-
-
-<div class="pix-box" id="pix">
-
-<h3 id="nomePresente"></h3>
-
-<p id="valorPresente"></p>
-
-<img src="qrcodepix.png" class="qr">
-
-<p class="pix-chave">
-Chave PIX:<br>
-seupix@email.com
-</p>
-
-</div>
-
+    </div>
+  </div>
 </section>
     
     
@@ -207,4 +191,25 @@ seupix@email.com
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
+    <div class="pix-modal" id="pixModal">
+
+  <div class="pix-content">
+
+    <span class="close-modal" onclick="fecharPix()">×</span>
+
+    <h3 id="pixGiftName"></h3>
+
+    <p id="pixValue"></p>
+
+    <img src="qrcodepix.png" class="pix-qrcode">
+
+    <p class="pix-key">
+      Chave PIX<br>
+      <strong>seuemail@pix.com</strong>
+    </p>
+
+  </div>
+
+</div>
+    
 </html>
