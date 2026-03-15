@@ -166,36 +166,36 @@ Era terça de lua cheia, das vezes em que vivemos momentos que vamos relembrar a
       </button>
     </div>
 
-    <div class="gift-card">
-      <img src="https://via.placeholder.com/300x150" alt="Cotas de Viagem" class="gift-image">
-      <h3>Cotas de Viagem</h3>
-      <p>Nos ajude a realizar a viagem dos nossos sonhos.</p>
-      <span class="gift-price">R$ 500,00</span>
-      <button class="btn-solid btn-presentear" 
-              data-nome="Cotas de Viagem" 
-              data-valor="500,00" 
-              data-pix="SUA-CHAVE-PIX-AQUI">
+<div class="gift-card">
+    <img src="link-da-sua-foto.jpg" class="gift-image">
+    <h3>Jantar Romântico</h3>
+    <span class="gift-price">R$ 150,00</span>
+    
+    <button class="btn-solid" onclick="abrirPix('Jantar Romântico', '150,00', 'SUA-CHAVE-PIX-AQUI')">
         Presentear
-      </button>
-    </div>
+    </button>
+</div>
 
   </div>
 </section>
 
-<div id="pixModal" class="pix-modal">
-  <div class="pix-content">
-    <span class="close-modal">&times;</span>
-    <h3>Presentear 🤍</h3>
-    <p>Você escolheu: <strong id="modalGiftName">Nome do Presente</strong></p>
-    <p id="pixValue">Valor: R$ 0,00</p>
-    
-    <div class="pix-box">
-      <p class="pix-label">Escaneie o QR Code ou copie a chave:</p>
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=ExemploPix" alt="QR Code Pix" class="pix-qrcode">
+
       
-      <input type="text" id="pixKeyInput" readonly class="pix-input">
-      <button id="btn-copiar-pix">Copiar Chave Pix</button>
+      <div id="pixModal" class="pix-modal">
+    <div class="pix-content">
+        <span class="close-modal">&times;</span>
+        <h3>Presentear 🤍</h3>
+        
+        <p>Você escolheu: <strong id="modalGiftName"></strong></p>
+        
+        <p id="pixValue"></p> 
+        
+        <div class="pix-box">
+            <input type="text" id="pixKeyInput" readonly class="pix-input">
+            <button id="btn-copiar-pix">Copiar Chave Pix</button>
+        </div>
     </div>
+</div>
     
     <p class="pix-footer">Após o pagamento, envie-nos o comprovante para agradecermos!</p>
   </div>
@@ -209,6 +209,88 @@ Era terça de lua cheia, das vezes em que vivemos momentos que vamos relembrar a
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
+
+    <script>
+// ----------------------------
+// SISTEMA DE PRESENTES PIX
+// ----------------------------
+
+function abrirPix(nome, valor, chave) {
+    // 1. Localiza os elementos
+    const modal = document.getElementById("pixModal");
+    const nomePresente = document.getElementById("modalGiftName");
+    const valorPresente = document.getElementById("pixValue");
+    const inputPix = document.getElementById("pixKeyInput");
+    const btnCopiar = document.getElementById("btn-copiar-pix");
+
+    // 2. Verifica se todos os elementos existem antes de agir
+    if (modal && nomePresente && valorPresente && inputPix) {
+        
+        // 3. Preenche os dados dinamicamente
+        nomePresente.innerText = nome;
+        valorPresente.innerText = "Valor sugerido: R$ " + valor;
+        inputPix.value = chave;
+
+        // 4. Reseta o botão de copiar
+        if (btnCopiar) {
+            btnCopiar.innerText = "Copiar Chave Pix";
+            btnCopiar.style.backgroundColor = ""; 
+        }
+
+        // 5. Abre o modal (Força o display flex para garantir visibilidade)
+        modal.style.display = "flex";
+        modal.classList.add("ativo");
+        
+        console.log("Modal aberto para: " + nome);
+    } else {
+        console.error("Erro: Verifique se os IDs do seu HTML estão corretos (pixModal, modalGiftName, etc)");
+    }
+}
+
+function fecharPix() {
+    const modal = document.getElementById("pixModal");
+    if (modal) {
+        modal.classList.remove("ativo");
+        modal.style.display = "none";
+    }
+}
+
+// Configurações que rodam assim que a página carrega
+document.addEventListener("DOMContentLoaded", function() {
+    const btnCopiar = document.getElementById("btn-copiar-pix");
+    const inputPix = document.getElementById("pixKeyInput");
+    const modal = document.getElementById("pixModal");
+    const btnFechar = document.querySelector(".close-modal");
+
+    // Lógica de copiar
+    if (btnCopiar && inputPix) {
+        btnCopiar.onclick = function() {
+            inputPix.select();
+            inputPix.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(inputPix.value).then(() => {
+                btnCopiar.innerText = "Copiado! ✔";
+                btnCopiar.style.backgroundColor = "#8ca67a";
+                setTimeout(() => {
+                    btnCopiar.innerText = "Copiar Chave Pix";
+                    btnCopiar.style.backgroundColor = "";
+                }, 3000);
+            });
+        };
+    }
+
+    // Fecha ao clicar no X
+    if (btnFechar) {
+        btnFechar.onclick = fecharPix;
+    }
+
+    // Fecha ao clicar fora da caixa branca
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            fecharPix();
+        }
+    };
+});
+</script>
 </body>
 
     
