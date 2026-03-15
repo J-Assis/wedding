@@ -289,3 +289,91 @@ body {
     grid-column: span 2;
   }
 }
+/* PRESENTES */
+
+.gifts-section{
+background: var(--bg-main);
+}
+
+.gifts-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:40px;
+margin-top:80px;
+}
+
+.gift-card{
+background:var(--white-pure);
+padding:40px 30px;
+border:1px solid var(--gray-light);
+transition:var(--transition);
+}
+
+.gift-card:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 25px rgba(0,0,0,0.06);
+}
+
+.gift-card h3{
+font-family:'Illusias', serif;
+color:var(--dusty-blue);
+font-size:2rem;
+margin-bottom:10px;
+}
+
+.gift-card p{
+font-size:0.95rem;
+margin-bottom:15px;
+}
+
+.gift-price{
+display:block;
+font-size:1.2rem;
+color:var(--sage-green);
+margin-bottom:20px;
+letter-spacing:1px;
+}
+
+/* MODAL PIX */
+
+.pix-modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.45);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000;
+}
+
+.pix-content{
+background:var(--white-pure);
+padding:60px 40px;
+max-width:400px;
+text-align:center;
+position:relative;
+}
+
+.pix-content h3{
+font-family:'Illusias', serif;
+color:var(--dusty-blue);
+font-size:2.2rem;
+margin-bottom:10px;
+}
+
+.pix-qrcode{
+width:200px;
+margin:20px 0;
+}
+
+.pix-key{
+font-size:0.9rem;
+}
+
+.close-modal{
+position:absolute;
+top:10px;
+right:15px;
+font-size:26px;
+cursor:pointer;
+}
