@@ -66,13 +66,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // SISTEMA DE PRESENTES PIX
 // ----------------------------
 
-/**
- * Abre o modal de Pix com os dados do presente selecionado
- * @param {string} nome - Nome do presente
- * @param {string} valor - Valor formatado
- * @param {string} chave - A chave Pix para cópia
- */
 function abrirPix(nome, valor, chave) {
+    console.log("Botão clicado:", nome, valor, chave); // Debug para testar
+
     const modal = document.getElementById("pixModal");
     const nomePresente = document.getElementById("modalGiftName");
     const valorPresente = document.getElementById("pixValue");
@@ -80,70 +76,64 @@ function abrirPix(nome, valor, chave) {
     const btnCopiar = document.getElementById("btn-copiar-pix");
 
     if (modal && nomePresente && valorPresente && inputPix) {
-        // Preenche as informações
+        // Preenche os dados
         nomePresente.innerText = nome;
         valorPresente.innerText = "Valor sugerido: R$ " + valor;
         inputPix.value = chave;
 
-        // Reseta o estado do botão de copiar
+        // Reseta o botão de copiar para o estado original
         if (btnCopiar) {
             btnCopiar.innerText = "Copiar Chave Pix";
-            btnCopiar.style.backgroundColor = ""; // Volta para a cor do CSS
+            btnCopiar.style.backgroundColor = ""; 
         }
 
-        // Adiciona a classe que dispara a animação CSS (display: flex + fade/slide)
+        // Abre o modal
         modal.classList.add("ativo");
+        modal.style.display = "flex"; // Força a exibição caso o CSS falhe
+    } else {
+        console.error("Erro: Algum elemento do modal não foi encontrado no HTML.");
     }
 }
 
-/**
- * Fecha o modal de Pix removendo a classe ativa
- */
 function fecharPix() {
     const modal = document.getElementById("pixModal");
     if (modal) {
         modal.classList.remove("ativo");
+        modal.style.display = "none";
     }
 }
 
-// Event Listeners Adicionais para o Modal
+// Lógica do Botão Copiar e Fechamento (Rodar após o site carregar)
 document.addEventListener("DOMContentLoaded", function() {
-    const modal = document.getElementById("pixModal");
-    const btnFechar = document.querySelector(".close-modal");
     const btnCopiar = document.getElementById("btn-copiar-pix");
     const inputPix = document.getElementById("pixKeyInput");
+    const modal = document.getElementById("pixModal");
 
-    // Fecha ao clicar no 'X'
-    if (btnFechar) {
-        btnFechar.onclick = fecharPix;
+    if (btnCopiar && inputPix) {
+        btnCopiar.onclick = function() {
+            inputPix.select();
+            inputPix.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(inputPix.value).then(() => {
+                btnCopiar.innerText = "Copiado! ✔";
+                btnCopiar.style.backgroundColor = "#8ca67a";
+                setTimeout(() => {
+                    btnCopiar.innerText = "Copiar Chave Pix";
+                    btnCopiar.style.backgroundColor = "";
+                }, 3000);
+            });
+        };
     }
 
-    // Fecha ao clicar fora da caixa branca (no fundo escuro)
+    // Fecha o modal ao clicar fora dele
     window.onclick = function(event) {
         if (event.target == modal) {
             fecharPix();
         }
     };
-
-    // Lógica do botão Copiar
-    if (btnCopiar && inputPix) {
-        btnCopiar.onclick = function() {
-            inputPix.select();
-            inputPix.setSelectionRange(0, 99999); // Suporte para mobile
-            
-            navigator.clipboard.writeText(inputPix.value).then(() => {
-                // Feedback visual de sucesso
-                btnCopiar.innerText = "Copiado! ✔";
-                btnCopiar.style.backgroundColor = "#8ca67a"; // Tom verde suave
-                
-                // Opcional: Voltar ao texto normal após 3 segundos
-                setTimeout(() => {
-                    btnCopiar.innerText = "Copiar Chave Pix";
-                    btnCopiar.style.backgroundColor = "";
-                }, 3000);
-            }).catch(err => {
-                console.error("Erro ao copiar: ", err);
-            });
-        };
+    
+    // Configura o botão de fechar (X)
+    const btnFechar = document.querySelector(".close-modal");
+    if(btnFechar) {
+        btnFechar.onclick = fecharPix;
     }
 });
