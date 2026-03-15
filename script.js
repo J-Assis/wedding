@@ -59,3 +59,32 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+
+// ----------------------------
+// SISTEMA DE PRESENTES PIX
+// ----------------------------
+
+function abrirPix(nome, valor){
+
+    const nomePresente = document.getElementById("pixGiftName");
+    const valorPresente = document.getElementById("pixValue");
+    const modal = document.getElementById("pixModal");
+
+    if(nomePresente && valorPresente && modal){
+
+        nomePresente.innerText = nome;
+        valorPresente.innerText = "Valor sugerido: R$ " + valor;
+
+        modal.style.display = "flex";
+    }
+}
+
+function fecharPix(){
+
+    const modal = document.getElementById("pixModal");
+
+    if(modal){
+        modal.style.display = "none";
+    }
+}
