@@ -340,9 +340,9 @@ body {
 /*IMG*/
 .gift-image { 
   width: 100%; 
- aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 1;
   object-fit: contain; /* mostra a imagem inteira */
-  border-radius: 16px; 
+  border-radius: 0px; 
   margin-bottom: 20px; 
   transition: transform 0.6s ease; 
 }
