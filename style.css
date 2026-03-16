@@ -338,7 +338,7 @@ body {
 }
 
 .gift-image {
-  width: 100%;
+  width: 150%;
   height: 150px;
   object-fit: cover;
   border-radius: 16px;
