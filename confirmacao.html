@@ -8,65 +8,114 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-
-.confirm-section{
-max-width:600px;
-margin:180px auto 120px;
-padding:60px;
-background:white;
-box-shadow:0 10px 30px rgba(0,0,0,0.05);
-border-radius:6px;
-text-align:center;
+:root {
+    --dusty-blue: #7E96B6;
+    --sage-green: #8ca67a;
+    --gray-light: #e0e0e0;
+    --champagne: #D9C5B2;
+    --white: #ffffff;
 }
 
-.confirm-section h2{
-font-family:'Illusias',serif;
-font-size:3rem;
-color:var(--dusty-blue);
-margin-bottom:20px;
+body {
+    background-color: #f4f7f9; /* Fundo suave para destacar o card */
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Garante centralização vertical na tela */
+    font-family: 'Lora', serif;
 }
 
-.confirm-section p{
-margin-bottom:25px;
+.confirm-section {
+    width: 90%;
+    max-width: 500px; /* Tamanho único e elegante */
+    padding: 50px 40px;
+    background: var(--white);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    border-radius: 24px; /* Bordas bem arredondadas */
+    text-align: center;
+    box-sizing: border-box;
 }
 
-.form-group{
-margin-bottom:20px;
-text-align:left;
+.confirm-section h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2.5rem;
+    color: var(--dusty-blue);
+    margin-bottom: 10px;
 }
 
-.form-group label{
-display:block;
-margin-bottom:6px;
-font-size:0.85rem;
-letter-spacing:1px;
+.confirm-section p {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #888;
 }
 
 .form-group input,
-.form-group select{
-width:100%;
-padding:12px;
-border:1px solid var(--gray-light);
-font-family:'Libre Baskerville',serif;
+.form-group select {
+    width: 100%;
+    padding: 14px;
+    border: 1.5px solid var(--gray-light);
+    border-radius: 12px; /* Bordas arredondadas nos campos */
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    outline: none;
 }
 
-.small-warning{
-font-size:0.8rem;
-color:var(--sage-green);
-margin-top:15px;
-font-style:italic;
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--dusty-blue);
+    box-shadow: 0 0 8px rgba(126, 150, 182, 0.2);
 }
 
-button{
-margin-top:25px;
-padding:14px 40px;
-border:none;
-background:var(--champagne);
-cursor:pointer;
-text-transform:uppercase;
-letter-spacing:2px;
+button {
+    width: 100%; /* Botão largo para facilitar o clique no celular */
+    margin-top: 10px;
+    padding: 16px;
+    border: none;
+    background: var(--dusty-blue); /* Mudei para o azul para dar destaque */
+    color: white;
+    border-radius: 12px; /* Bordas arredondadas no botão */
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    transition: transform 0.2s, background 0.3s;
 }
 
+button:hover {
+    background: #6a82a3;
+    transform: translateY(-2px);
+}
+
+.small-warning {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 25px;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+#msg {
+    margin-top: 20px;
+    font-weight: bold;
+    color: var(--sage-green);
+}
 </style>
 
 </head>
