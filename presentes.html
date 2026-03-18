@@ -1,103 +1,139 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Presentes</title>
-
-<style>
-
-body{
-font-family: Georgia, serif;
-text-align:center;
-background:#f5f5f5;
-}
-
-h1{
-margin-top:80px;
-color:#6b7fa3;
-}
-
-.presentes{
-display:flex;
-justify-content:center;
-gap:30px;
-margin-top:60px;
-flex-wrap:wrap;
-}
-
-.presente{
-background:white;
-padding:30px;
-width:200px;
-border-radius:10px;
-cursor:pointer;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-transition:0.3s;
-}
-
-.presente:hover{
-transform:scale(1.05);
-}
-
-.pix-box{
-display:none;
-margin-top:60px;
-}
-
-.pix-box img{
-width:220px;
-margin-bottom:15px;
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Presentes | Julya & Emanuel</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<h1>Lista de Presentes</h1>
+    <nav class="navbar" style="position: sticky; top: 0; background: rgba(255,255,255,0.95); z-index: 1000;">
+        <div class="nav-container">
+            <a href="index.html" class="monogram" style="text-decoration: none; color: #7E96B6;">J & E</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Voltar ao Início</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<p>Sua presença já é o nosso maior presente.  
-Mas se desejar nos abençoar, escolha uma opção:</p>
+    <section id="presentes" class="gifts-section" style="padding: 40px 10px;">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 class="cursive-title" data-aos="fade-down">Nossa Lista de Presentes</h2>
+            <p class="memories-subtitle" data-aos="fade-up" style="max-width: 600px; margin: 0 auto;">
+                Sua presença é nosso maior presente, mas se quiser nos abençoar, escolhemos itens que refletem nossa nova rotina (com um toque de humor)!
+            </p>
+        </div>
 
-<div class="presentes">
+        <div class="gifts-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
 
-<div class="presente" onclick="mostrarPix()">
-🍽️ Jantar romântico
-</div>
+            <div class="gift-card"><img src="noiva.jpeg" class="gift-image"><h3>Dia de paz pra noiva</h3><p>Um dia de spa antes do casamento (pra não surtar).</p><span class="gift-price">R$ 200,00</span><button class="btn-solid" onclick="abrirPix('Dia de paz pra noiva', '200,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="noivo.jpeg" class="gift-image"><h3>Dia do noivo</h3><p>Pra ficar bonito e cheiroso.</p><span class="gift-price">R$ 200,00</span><button class="btn-solid" onclick="abrirPix('Dia do noivo', '200,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto34.jpeg" class="gift-image"><h3>Maquiagem da noiva</h3><p>Pra brilhar no casamento.</p><span class="gift-price">R$ 300,00</span><button class="btn-solid" onclick="abrirPix('Maquiagem da noiva', '300,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto45.jpeg" class="gift-image"><h3>Terno do Noivo</h3><p>Pro noivo ficar todo cuti cuti.</p><span class="gift-price">R$ 200,00</span><button class="btn-solid" onclick="abrirPix('Terno do Noivo', '200,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="mel.jpeg" class="gift-image"><h3>Lua de Mel</h3><p>Valor de uma noite ta?, solta esse dinheiro aí.</p><span class="gift-price">R$ 630,00</span><button class="btn-solid" onclick="abrirPix('Lua de Mel', '630,00', '73982071407')">Presentear</button></div>
 
-<div class="presente" onclick="mostrarPix()">
-✈️ Ajuda na Lua de Mel
-</div>
+            <div class="gift-card"><img src="foto6.jpeg" class="gift-image"><h3>Decoração do casamento</h3><p>Pros convidados ficarem cuti cuti na festa.</p><span class="gift-price">R$ 550,00</span><button class="btn-solid" onclick="abrirPix('Decoração do casamento', '550,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto7.jpeg" class="gift-image"><h3>Curso de culinária para a noiva</h3><p>Pra ela dar uma folga pro noivo.</p><span class="gift-price">R$ 150,00</span><button class="btn-solid" onclick="abrirPix('Curso de culinária para noiva', '150,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto8.jpeg" class="gift-image"><h3>Curso de lavar louça para o noivo</h3><p>Igualdade começa na pia.</p><span class="gift-price">R$ 90,00</span><button class="btn-solid" onclick="abrirPix('Curso de lavar louça', '90,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto9.jpeg" class="gift-image"><h3>Café para sobreviver às segundas</h3><p>Amor é lindo, mas café ajuda.</p><span class="gift-price">R$ 150,00</span><button class="btn-solid" onclick="abrirPix('Café para sobreviver', '150,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto10.jpeg" class="gift-image"><h3>Pizza da reconciliação</h3><p>Pra quando o noivo esquecer de lavar a louça.</p><span class="gift-price">R$ 150,00</span><button class="btn-solid" onclick="abrirPix('Pizza da reconciliação', '150,00', '73982071407')">Presentear</button></div>
 
-<div class="presente" onclick="mostrarPix()">
-🏡 Nosso novo lar
-</div>
+            <div class="gift-card"><img src="foto11.jpeg" class="gift-image"><h3>Rolo de macarrão da noiva</h3><p>Para quando o noivo aprontar.</p><span class="gift-price">R$ 100,00</span><button class="btn-solid" onclick="abrirPix('Rolo de macarrão', '100,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto12.jpeg" class="gift-image"><h3>Capacete contra rolo de macarrão</h3><p>Proteção obrigatória do noivo.</p><span class="gift-price">R$ 150,00</span><button class="btn-solid" onclick="abrirPix('Capacete protetor', '150,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto13.jpeg" class="gift-image"><h3>Terapia de casal preventiva</h3><p>Melhor prevenir do que remediar.</p><span class="gift-price">R$ 220,00</span><button class="btn-solid" onclick="abrirPix('Terapia preventiva', '220,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto14.jpeg" class="gift-image"><h3>Primeira feira do casalllll</h3><p>Contribua para o nosso primeiro full of food juntos.</p><span class="gift-price">R$ 650,00</span><button class="btn-solid" onclick="abrirPix('Primeira feira', '650,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto15.jpeg" class="gift-image"><h3>Kit miojo gourmet</h3><p>Para dias de caos culinário.</p><span class="gift-price">R$ 50,00</span><button class="btn-solid" onclick="abrirPix('Kit miojo gourmet', '50,00', '73982071407')">Presentear</button></div>
 
-</div>
+            <div class="gift-card"><img src="foto16.jpeg" class="gift-image"><h3>Combustível para aventuras</h3><p>Ou para ir comprar pão às 22h.</p><span class="gift-price">R$ 77,00</span><button class="btn-solid" onclick="abrirPix('Combustível', '77,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto17.jpeg" class="gift-image"><h3>Plantinha da responsabilidade</h3><p>Se ela sobreviver… o casamento também.</p><span class="gift-price">R$ 120,00</span><button class="btn-solid" onclick="abrirPix('Plantinha', '120,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto18.jpeg" class="gift-image"><h3>Iluminação para a Lua de Mel</h3><p>Uma luz se abre para nossa viagem.</p><span class="gift-price">R$ 1.000,00</span><button class="btn-solid" onclick="abrirPix('Iluminação Lua de Mel', '1.000,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto19.jpeg" class="gift-image"><h3>O inesperado</h3><p>Se por alguma intervenção divina…</p><span class="gift-price">R$ 4.000,00</span><button class="btn-solid" onclick="abrirPix('O inesperado', '4.000,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto20.jpeg" class="gift-image"><h3>Cobertinha</h3><p>Pra noiva ficar coberta de razão!</p><span class="gift-price">R$ 160,00</span><button class="btn-solid" onclick="abrirPix('Cobertinha', '160,00', '73982071407')">Presentear</button></div>
 
-<div class="pix-box" id="pix">
+            <div class="gift-card"><img src="foto21.jpeg" class="gift-image"><h3>Fundo “sobrevivemos ao mês”</h3><p>Ajuda nas contas inesperadas.</p><span class="gift-price">R$ 350,00</span><button class="btn-solid" onclick="abrirPix('Fundo emergência', '350,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto22.jpeg" class="gift-image"><h3>Manual de sobrevivência do casamento</h3><p>Ainda estamos escrevendo.</p><span class="gift-price">R$ 100,00</span><button class="btn-solid" onclick="abrirPix('Manual sobrevivência', '100,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto23.jpeg" class="gift-image"><h3>Pix da felicidade conjugal</h3><p>Dinheiro não traz felicidade… mas ajuda!</p><span class="gift-price">R$ 130,00</span><button class="btn-solid" onclick="abrirPix('Pix felicidade', '130,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto24.jpeg" class="gift-image"><h3>Só pra não dizer que não dei nada</h3><p>Clássico presente honesto.</p><span class="gift-price">R$ 50,00</span><button class="btn-solid" onclick="abrirPix('Presente honesto', '50,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto25.jpeg" class="gift-image"><h3>TV - Pro noivo asistir seus doramas</h3><p>Não pode faltar pra ele!</p><span class="gift-price">R$ 2.700,00</span><button class="btn-solid" onclick="abrirPix('TV Doramas', '2.700,00', '73982071407')">Presentear</button></div>
 
-<h2>Escaneie o QR Code</h2>
+            <div class="gift-card"><img src="foto26.jpeg" class="gift-image"><h3>Cueca do Homem Aranha</h3><p>Pro noivo arrasar na lua de mel.</p><span class="gift-price">R$ 50,00</span><button class="btn-solid" onclick="abrirPix('Cueca do Homem Aranha', '50,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto27.jpeg" class="gift-image"><h3>Deus tocou no seu coração</h3><p>"Eu sou RICAAAAA"</p><span class="gift-price">R$ 1.500,00</span><button class="btn-solid" onclick="abrirPix('Coração generoso', '1.500,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto28.jpeg" class="gift-image"><h3>Tampão de ouvido pro noivo</h3><p>a noiva ronca muito...</p><span class="gift-price">R$ 150,00</span><button class="btn-solid" onclick="abrirPix('Tampão de ouvido', '150,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto29.jpeg" class="gift-image"><h3>Mergulho com tubarões</h3><p>(Somente para o noivo)</p><span class="gift-price">R$ 270,00</span><button class="btn-solid" onclick="abrirPix('Mergulho tubarões', '270,00', '73982071407')">Presentear</button></div>
+            <div class="gift-card"><img src="foto30.jpeg" class="gift-image"><h3>Piscininha amor</h3><p>Mergulhada pra relaxar</p><span class="gift-price">R$ 260,00</span><button class="btn-solid" onclick="abrirPix('Piscininha amor', '260,00', '73982071407')">Presentear</button></div>
 
-<img src="qrcodepix.png">
+        </div> 
+    </section>
 
-<p><b>Chave PIX:</b><br>
-seupix@email.com
-</p>
+    <div id="pixModal" class="pix-modal" style="display:none;">
+        <div class="pix-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h3>✿ Presentear ✿</h3>
+            <p>Você escolheu: <strong id="modalGiftName"></strong></p>
+            <p id="pixValue"></p> 
+            <div class="pix-box">
+                <input type="text" id="pixKeyInput" readonly class="pix-input" style="width: 100%; text-align: center; margin-bottom: 10px; padding: 10px;">
+                <button id="btn-copiar-pix" class="btn-solid" style="width: 100%;">Copiar Chave Pix</button>
+            </div>
+            <p style="font-size: 0.8rem; margin-top: 15px; color: #666;">Após copiar, abra o app do seu banco e cole a chave para finalizar.</p>
+        </div>
+    </div>
 
-</div>
+    <footer class="footer">
+        <div class="monogram" style="color: #7E96B6; margin-bottom: 10px;">J & E</div>
+        <p>07.10.2026 • Brasil</p>
+    </footer>
 
-<script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000 });
 
-function mostrarPix(){
-document.getElementById("pix").style.display = "block";
-window.scrollTo({
-top:600,
-behavior:"smooth"
-});
-}
+        // Função de abrir o modal
+        function abrirPix(nome, valor, chave) {
+            const modal = document.getElementById("pixModal");
+            document.getElementById("modalGiftName").innerText = nome;
+            document.getElementById("pixValue").innerText = "Valor sugerido: R$ " + valor;
+            document.getElementById("pixKeyInput").value = chave;
+            
+            modal.style.display = "flex";
+            modal.classList.add("ativo");
+        }
 
-</script>
+        // Função de fechar o modal
+        const fecharModal = () => {
+            const modal = document.getElementById("pixModal");
+            modal.style.display = "none";
+            modal.classList.remove("ativo");
+        };
 
+        document.getElementById("closeModal").onclick = fecharModal;
+
+        // Função de copiar
+        document.getElementById("btn-copiar-pix").onclick = function() {
+            const inputPix = document.getElementById("pixKeyInput");
+            inputPix.select();
+            inputPix.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(inputPix.value).then(() => {
+                this.innerText = "Copiado! ✔";
+                this.style.backgroundColor = "#8ca67a";
+                setTimeout(() => {
+                    this.innerText = "Copiar Chave Pix";
+                    this.style.backgroundColor = "";
+                }, 3000);
+            });
+        };
+
+        // Fechar ao clicar fora do modal
+        window.onclick = function(event) {
+            const modal = document.getElementById("pixModal");
+            if (event.target == modal) {
+                fecharModal();
+            }
+        };
+    </script>
 </body>
 </html>
