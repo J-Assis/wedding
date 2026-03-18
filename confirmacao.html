@@ -176,13 +176,13 @@ document.getElementById("rsvpForm").addEventListener("submit", function(e){
   .then(res=>res.text())
   .then(res=>{
 
-    document.getElementById("msg").innerText="Presença confirmada! Redirecionando..."
+    document.getElementById("msg").innerText="Respondido! Redirecionando..."
 
     document.getElementById("rsvpForm").reset()
 
     setTimeout(function(){
       window.location.href="index.html"
-    },1500)
+    },1000)
 
   })
   .catch(()=>{
